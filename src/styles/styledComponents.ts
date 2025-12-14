@@ -7,18 +7,10 @@ export const MainWrapper = styled.main`
   color: white;
   position: relative;
   overflow: hidden;
-  background-image: url('Coderiver/mainBackground.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  @media (max-width: 768px) {
-    background-position: 60% center;
-  }
 
 `;
 

@@ -1,4 +1,6 @@
 import { ContentWrapper, MainWrapper } from "@styles";
+import "@styles/app.css";
+
 import { NAV_MENU } from "./constants";
 import { StartButton, Header, ScrollButton, ParticleWave, HeroTitle } from "@components";
 import { particleWaveConfig } from "@configs";
@@ -9,7 +11,7 @@ function App() {
 
   return (
     <>
-      <MainWrapper>
+      <MainWrapper className="main-background">
         <Header menuList={NAV_MENU} />
         <ParticleWave config={particleWaveConfig} />
         <ContentWrapper>

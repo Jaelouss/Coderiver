@@ -1,0 +1,12 @@
+.main-background {
+  background-image: url("../assets/mainBackground.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  .main-background {
+    background-position: 60% center;
+  }
+}
