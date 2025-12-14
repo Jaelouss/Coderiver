@@ -1,18 +1,20 @@
-# React + Vite
+# Coderiver
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Читати українською](./README_UA.md)
 
-Currently, two official plugins are available:
+A modern React application built with Vite and TypeScript, featuring immersive 3D particle animations and a premium UI design.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Main Page Screenshot](./public/mainPageScreenshot.png)
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **Core:** React 19, TypeScript, Vite
+- **Visuals:** Three.js, tsparticles, GSAP, Styled Components
+- **Effects:** use-scramble
 
-Note: This will impact Vite dev & build performances.
+## Features
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Refined Particle Wave:** A custom, performant 3D particle wave animation using Three.js with dynamic amplitude and density.
+- **Smooth Interactions:** Scramble text effects and polished hover states.
+- **Modern UI:** Custom SVGs and a fully responsive layout.
+- **Production Ready:** Linted with ESLint, structured with alias paths, and optimized build setup.
