@@ -7,7 +7,7 @@ export const MainWrapper = styled.main`
   color: white;
   position: relative;
   overflow: hidden;
-  background-image: url('/mainBackground.svg');
+  background-image: url('Coderiver/mainBackground.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -15,7 +15,11 @@ export const MainWrapper = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
+
+  @media (max-width: 768px) {
+    background-position: 60% center;
+  }
+
 `;
 
 
@@ -24,6 +28,19 @@ export const HeaderWrapper = styled.header`
   justify-content: space-between;
   padding-inline: 3rem;
   padding-block: 3rem 1rem;
+
+  @media (max-width: 768px) {
+    padding-inline: 1.5rem;
+    padding-block: 2rem 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding-inline: 1rem;
+    padding-block: 1.5rem 1rem;
+  }
   position: relative;
   z-index: 2;
 `;
@@ -36,6 +53,20 @@ export const MainNav = styled.nav`
 export const NavList = styled.ul`
   display: flex;
   gap: 50px;
+
+  @media (max-width: 1024px) {
+    gap: 30px;
+  }
+
+  @media (max-width: 768px) {
+     gap: 20px;
+     flex-wrap: wrap;
+     justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    gap: 15px;
+  }
   list-style: none;
   padding: 0;
   margin: 0;
@@ -71,6 +102,16 @@ export const StartButtonWrapper = styled.div`
   position: relative;
   width: 320px;
   height: 80px;
+
+  @media (max-width: 768px) {
+    width: 280px;
+    height: 70px;
+  }
+
+  @media (max-width: 480px) {
+    width: 260px;
+    height: 65px;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,6 +131,8 @@ export const BgIcon = styled(StartButtonBackground)`
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
 `;
 
@@ -97,6 +140,18 @@ export const StyledStartButton = styled.button`
   border: none;
   width: 320.0px;
   height: 80.0px;
+
+  @media (max-width: 768px) {
+    width: 280px;
+    height: 70px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    width: 260px;
+    height: 65px;
+    font-size: 14px;
+  }
   text-align: center;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.50);
   font-size: 18px;
@@ -108,7 +163,7 @@ export const StyledStartButton = styled.button`
   cursor: pointer;
 `;
 
-export const ScrollButtonWrapper = styled.button<{ isOpen: boolean }>`
+export const ScrollButtonWrapper = styled.button<{ $isOpen: boolean }>`
   width: 58px;
   height: 58px;
   border: 2px solid #464D62;
@@ -118,7 +173,7 @@ export const ScrollButtonWrapper = styled.button<{ isOpen: boolean }>`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transform: ${props => props.isOpen ? "rotate(180deg)" : "rotate(0deg)"};
+  transform: ${props => props.$isOpen ? "rotate(180deg)" : "rotate(0deg)"};
   transition: transform 0.3s ease, border-color 0.3s ease;
 
   &:hover {
@@ -139,13 +194,26 @@ export const StyledTitle = styled.h1`
   color: #FFF;
   text-align: center;
   font-size: 84px;
+
+  @media (max-width: 1024px) {
+     font-size: 64px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+    max-width: 80%;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+  }
   font-style: normal;
   font-weight: 500;
   line-height: 105%;
   letter-spacing: 0.84px;
   max-width: 914px;
   margin: 0 auto;
-  transform: translateY(100%); /* Initial state hidden */
+  transform: translateY(100%);
 `;
 
 export const CanvasContainer = styled.div`

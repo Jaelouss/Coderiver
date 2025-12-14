@@ -7,7 +7,7 @@ export const ScrollButton = ({ onClick, isOpen }: ScrollButtonProps) => {
 		<ScrollButtonWrapper
 			type="button"
 			onClick={onClick}
-			isOpen={isOpen}
+			$isOpen={isOpen}
 		>
 			<ArrowBottom />
 		</ScrollButtonWrapper>
