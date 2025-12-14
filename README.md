@@ -2,6 +2,8 @@
 
 [Читати українською](./README_UA.md)
 
+[**Live Preview**](https://jaelouss.github.io/Coderiver/) | [**Repository**](https://github.com/Jaelouss/Coderiver)
+
 A modern React application built with Vite and TypeScript, featuring immersive 3D particle animations and a premium UI design.
 
 ![Main Page Screenshot](./public/mainPageScreenshot.png)

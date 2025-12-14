@@ -2,6 +2,8 @@
 
 [Read in English](./README.md)
 
+[**Живий перегляд**](https://jaelouss.github.io/Coderiver/) | [**Репозиторій**](https://github.com/Jaelouss/Coderiver)
+
 Сучасний React додаток, створений на Vite та TypeScript, з вражаючими 3D анімаціями частинок та преміум UI дизайном.
 
 ![Скріншот головної сторінки](./public/mainPageScreenshot.png)
