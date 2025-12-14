@@ -113,8 +113,8 @@ export const ParticleWave = ({ config }: ParticleWaveProps) => {
 		};
 
 		if (container) {
-			container.addEventListener('mousemove', handleMouseMove);
-			container.addEventListener('mouseleave', handleMouseLeave);
+			window.addEventListener('mousemove', handleMouseMove);
+			window.addEventListener('mouseout', handleMouseLeave);
 		}
 
 		let time = 0;
@@ -267,13 +267,17 @@ export const ParticleWave = ({ config }: ParticleWaveProps) => {
 
 		return () => {
 			window.removeEventListener('resize', handleResize);
+			window.removeEventListener('mousemove', handleMouseMove);
+			window.removeEventListener('mouseout', handleMouseLeave);
 			if (animationFrameRef.current) {
 				cancelAnimationFrame(animationFrameRef.current);
 			}
 			renderer.dispose();
 			geometry.dispose();
 			material.dispose();
-			container.removeChild(renderer.domElement);
+			if (container && container.contains(renderer.domElement)) {
+				container.removeChild(renderer.domElement);
+			}
 		};
 	}, [config]);
 
