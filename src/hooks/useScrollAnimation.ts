@@ -10,23 +10,31 @@ export const useScrollAnimation = () => {
 	const progressRef = useRef(0);
 
 	useEffect(() => {
-		gsap.set(".hero-title", { y: "100%" });
-		gsap.set(".header-logo", { y: "100%" });
-
 		const tl = gsap.timeline({ paused: true });
 
-		tl.to(".hero-title", { y: 0, duration: 1, ease: "linear" })
-			.to(".header-logo", { y: 0, duration: 1, ease: "linear" }, "<");
+		tl.fromTo(".hero-title",
+			{ y: "0%", opacity: 1, filter: "blur(0px)" },
+			{ y: "100%", opacity: 0, filter: "blur(20px)", duration: 1, ease: "linear" }
+		)
+			.fromTo(".header-logo",
+				{ y: "0%", opacity: 1, filter: "blur(0px)" },
+				{ y: "100%", opacity: 0, filter: "blur(20px)", duration: 1, ease: "linear" },
+				"<"
+			);
 
 		timelineRef.current = tl;
+
+		tl.progress(1);
+
+		gsap.to(tl, { progress: 0, duration: 2.5, ease: "power3.out" });
+
 
 		const observer = Observer.create({
 			target: window,
 			type: "wheel,touch,pointer",
 			onChange: (self) => {
 				const delta = self.deltaY;
-				const sensitivity = 0.0015;
-
+				const sensitivity = 0.002;
 				let newProgress = progressRef.current + (delta * sensitivity);
 				newProgress = gsap.utils.clamp(0, 1, newProgress);
 

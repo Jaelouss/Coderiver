@@ -17,7 +17,7 @@ export const ParticleWave = ({ config }: ParticleWaveProps) => {
 		if (!containerRef.current) return;
 
 		const container = containerRef.current;
-		const width = Math.max(container.clientWidth, 1440);
+		const width = container.clientWidth;
 		const height = container.clientHeight;
 
 		const scene = new THREE.Scene();
@@ -30,12 +30,6 @@ export const ParticleWave = ({ config }: ParticleWaveProps) => {
 		});
 		renderer.setSize(width, height);
 		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-		renderer.domElement.style.position = 'absolute';
-		renderer.domElement.style.top = '0';
-		renderer.domElement.style.left = '50%';
-		renderer.domElement.style.transform = 'translateX(-50%)';
-
 		container.appendChild(renderer.domElement);
 
 		const particleCount = config.particleCount;
@@ -259,7 +253,7 @@ export const ParticleWave = ({ config }: ParticleWaveProps) => {
 		animate();
 
 		const handleResize = () => {
-			const newWidth = Math.max(container.clientWidth, 1440);
+			const newWidth = container.clientWidth;
 			const newHeight = container.clientHeight;
 
 			camera.right = newWidth;
@@ -275,7 +269,6 @@ export const ParticleWave = ({ config }: ParticleWaveProps) => {
 			window.removeEventListener('resize', handleResize);
 			window.removeEventListener('mousemove', handleMouseMove);
 			window.removeEventListener('mouseout', handleMouseLeave);
-
 			if (animationFrameRef.current) {
 				cancelAnimationFrame(animationFrameRef.current);
 			}
