@@ -17,7 +17,7 @@ export const ParticleWave = ({ config }: ParticleWaveProps) => {
 		if (!containerRef.current) return;
 
 		const container = containerRef.current;
-		const width = container.clientWidth;
+		const width = Math.max(container.clientWidth, 1440);
 		const height = container.clientHeight;
 
 		const scene = new THREE.Scene();
@@ -30,6 +30,12 @@ export const ParticleWave = ({ config }: ParticleWaveProps) => {
 		});
 		renderer.setSize(width, height);
 		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+		renderer.domElement.style.position = 'absolute';
+		renderer.domElement.style.top = '0';
+		renderer.domElement.style.left = '50%';
+		renderer.domElement.style.transform = 'translateX(-50%)';
+
 		container.appendChild(renderer.domElement);
 
 		const particleCount = config.particleCount;
@@ -112,9 +118,24 @@ export const ParticleWave = ({ config }: ParticleWaveProps) => {
 			mouse.set(-1000, -1000);
 		};
 
+		const handleTouchMove = (event: TouchEvent) => {
+			const rect = containerRef.current?.getBoundingClientRect();
+			if (!rect || event.touches.length === 0) return;
+			const touch = event.touches[0];
+			mouse.x = touch.clientX - rect.left;
+			mouse.y = touch.clientY - rect.top;
+		};
+
+		const handleTouchEnd = () => {
+			mouse.set(-1000, -1000);
+		};
+
 		if (container) {
 			window.addEventListener('mousemove', handleMouseMove);
 			window.addEventListener('mouseout', handleMouseLeave);
+			window.addEventListener('touchstart', handleTouchMove, { passive: true });
+			window.addEventListener('touchmove', handleTouchMove, { passive: true });
+			window.addEventListener('touchend', handleTouchEnd);
 		}
 
 		let time = 0;
@@ -253,7 +274,7 @@ export const ParticleWave = ({ config }: ParticleWaveProps) => {
 		animate();
 
 		const handleResize = () => {
-			const newWidth = container.clientWidth;
+			const newWidth = Math.max(container.clientWidth, 1440);
 			const newHeight = container.clientHeight;
 
 			camera.right = newWidth;
@@ -269,6 +290,9 @@ export const ParticleWave = ({ config }: ParticleWaveProps) => {
 			window.removeEventListener('resize', handleResize);
 			window.removeEventListener('mousemove', handleMouseMove);
 			window.removeEventListener('mouseout', handleMouseLeave);
+			window.removeEventListener('touchstart', handleTouchMove);
+			window.removeEventListener('touchmove', handleTouchMove);
+			window.removeEventListener('touchend', handleTouchEnd);
 			if (animationFrameRef.current) {
 				cancelAnimationFrame(animationFrameRef.current);
 			}

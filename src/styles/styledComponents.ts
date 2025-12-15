@@ -3,7 +3,7 @@ import StartButtonBackground from "@assets/startButtonBackground.svg?react";
 
 export const MainWrapper = styled.main`
   background-color: #19181b;
-  min-height: 100vh;
+  min-height: 100dvh;
   color: white;
   position: relative;
   overflow: hidden;
@@ -11,7 +11,15 @@ export const MainWrapper = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-bottom: 44px;
 
+  @media (max-width: 768px) {
+    padding-bottom: 24px;
+  }
+
+  @media (max-width: 480px) {
+    padding-bottom: 10px;
+  }
 `;
 
 
@@ -110,8 +118,10 @@ export const StartButtonWrapper = styled.div`
   transition: transform 0.3s ease;
   cursor: pointer;
 
-  &:hover {
-    transform: scale(1.05);
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &:active {
@@ -168,8 +178,10 @@ export const ScrollButtonWrapper = styled.button<{ $isOpen: boolean }>`
   transform: ${props => props.$isOpen ? "rotate(180deg)" : "rotate(0deg)"};
   transition: transform 0.3s ease, border-color 0.3s ease;
 
-  &:hover {
-    border-color: #6b7280;
+  @media (hover: hover) {
+    &:hover {
+      border-color: #6b7280;
+    }
   }
 
   svg {
