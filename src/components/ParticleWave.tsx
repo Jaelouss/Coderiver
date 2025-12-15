@@ -118,24 +118,9 @@ export const ParticleWave = ({ config }: ParticleWaveProps) => {
 			mouse.set(-1000, -1000);
 		};
 
-		const handleTouchMove = (event: TouchEvent) => {
-			const rect = containerRef.current?.getBoundingClientRect();
-			if (!rect || event.touches.length === 0) return;
-			const touch = event.touches[0];
-			mouse.x = touch.clientX - rect.left;
-			mouse.y = touch.clientY - rect.top;
-		};
-
-		const handleTouchEnd = () => {
-			mouse.set(-1000, -1000);
-		};
-
 		if (container) {
 			window.addEventListener('mousemove', handleMouseMove);
 			window.addEventListener('mouseout', handleMouseLeave);
-			window.addEventListener('touchstart', handleTouchMove, { passive: true });
-			window.addEventListener('touchmove', handleTouchMove, { passive: true });
-			window.addEventListener('touchend', handleTouchEnd);
 		}
 
 		let time = 0;
@@ -290,9 +275,7 @@ export const ParticleWave = ({ config }: ParticleWaveProps) => {
 			window.removeEventListener('resize', handleResize);
 			window.removeEventListener('mousemove', handleMouseMove);
 			window.removeEventListener('mouseout', handleMouseLeave);
-			window.removeEventListener('touchstart', handleTouchMove);
-			window.removeEventListener('touchmove', handleTouchMove);
-			window.removeEventListener('touchend', handleTouchEnd);
+
 			if (animationFrameRef.current) {
 				cancelAnimationFrame(animationFrameRef.current);
 			}
